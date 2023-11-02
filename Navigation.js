@@ -15,12 +15,12 @@ const Navigation = () => {
         initialRouteName="Welcome"
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#63cfbe',
+            backgroundColor: '#425B89',
           },
           headerTintColor: '#fff',
         }}
       >
-        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Home" component={Welcome} />
         <Stack.Screen name="LoginCadastro" component={LoginCadastro} />
         <Stack.Screen name="Perfil" component={Perfil} />
       </Stack.Navigator>
