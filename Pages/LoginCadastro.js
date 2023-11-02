@@ -124,14 +124,14 @@ const LoginCadastro = () => {
       />
       {isRegistering ? (
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: '#63cfbe' }]}
+        style={[styles.button, { backgroundColor: '#425B89' }]}
         onPress={adduser}
       >
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
     ) : (
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: '#63cfbe' }]}
+        style={[styles.button, { backgroundColor: '#425B89' }]}
         onPress={entrar}
       >
         <Text style={styles.buttonText}>Login</Text>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#rgb(100,100,100)',
+    backgroundColor: '#gray',
   },
   input: {
     width: '100%',
@@ -163,11 +163,11 @@ const styles = StyleSheet.create({
   },
   textLink: {
     marginTop: 12,
-    color: '#63cfbe',
+    color: '#425B89',
     textDecorationLine: 'underline',
   },
   button: {
-    backgroundColor: '#63cfbe',
+    backgroundColor: '#425B89',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',

@@ -1,7 +1,8 @@
 import React from 'react';
-import { TouchableOpacity,View, Text, Button, StyleSheet, Linking } from 'react-native';
+import { TouchableOpacity,View, Text, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import { Linking } from 'react-native';
 
 
 
@@ -9,11 +10,11 @@ const Perfil = () => {
   const navigation = useNavigation();
 
   const profiles = [
-    { nome: 'Pedreiro Jorge', experiencia: 'Experiência: 5 anos, me siga no Instagram', instagram: '@jorjinhopedreiro' },
-    { nome: 'Gesseiro Miguel', experiencia: 'Experiência: 3 anos, me siga no Instagram', instagram: '@migueldogesso' },
-    { nome: 'Ladrilheiro Fabio', experiencia: 'Experiência: 2 anos, me siga no Instagram', instagram: '@Fabio_duladrilho' },
-    { nome: 'Pintor Igor', experiencia: 'Experiência: 4 anos, me siga no Instagram', instagram: '@hugopintor_br' },
-    { nome: 'Armador Pedro', experiencia: 'Experiência: 6 anos, me siga no Instagram', instagram: '@pedrinho_armador' },
+    { nome: 'Programador Jorge', experiencia: 'Experiência: 5 anos, me siga no Instagram', instagram: '@programador_Jorge' },
+    { nome: 'Analista de Infraestutura Miguel', experiencia: 'Experiência: 3 anos, me siga no Instagram', instagram: '@migueldainfra' },
+    { nome: 'Devops Fabio', experiencia: 'Experiência: 2 anos, me siga no Instagram', instagram: '@Fabio_devops' },
+    { nome: 'Analista de BI Igor', experiencia: 'Experiência: 4 anos, me siga no Instagram', instagram: '@igorBI_br' },
+    { nome: 'FrontEnd Pedro', experiencia: 'Experiência: 6 anos, me siga no Instagram', instagram: '@pedrinho_frontend' },
   ];
 
   const [filtro, setFiltro] = React.useState('Todos');
@@ -33,11 +34,18 @@ const Perfil = () => {
   };
 
   const handleContactWhatsApp = () => {
-    const phoneNumber = '+5521965391536';
-    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}`;
+    const phoneNumber = '+5521984757151';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
   
-    Linking.openURL(whatsappUrl)
-      .catch((error) => console.log('Error opening WhatsApp:', error));
+    Linking.canOpenURL(whatsappUrl)
+      .then((supported) => {
+        if (supported) {
+          return Linking.openURL(whatsappUrl);
+        } else {
+          console.log('Não é possível abrir o WhatsApp');
+        }
+      })
+      .catch((error) => console.log('Erro ao abrir o WhatsApp:', error));
   };
   
 
@@ -53,11 +61,11 @@ const Perfil = () => {
           onValueChange={(itemValue) => handleFiltro(itemValue)}
         >
           <Picker.Item label="Todos" value="Todos" />
-          <Picker.Item label="Pedreiros" value="Pedreiro" />
-          <Picker.Item label="Gesseiros" value="Gesseiro" />
-          <Picker.Item label="Ladrilheiros" value="Ladrilheiro" />
-          <Picker.Item label="Pintores" value="Pintor" />
-          <Picker.Item label="Armadores" value="Armador" />
+          <Picker.Item label="Programadores" value="Programador" />
+          <Picker.Item label="Analistas de Infraestutura" value="Analista de Infraestutura" />
+          <Picker.Item label="Devops" value="Devops" />
+          <Picker.Item label="Analistas de BI" value="Analista de BI" />
+          <Picker.Item label="FrontEnds" value="FrontEnd" />
         </Picker>
       </View>
       {perfilSelecionado ? (
@@ -71,7 +79,7 @@ const Perfil = () => {
       {perfisFiltrados.map((profile, index) => (
         <TouchableOpacity
           key={index}
-          style={[styles.button, { backgroundColor: '#63cfbe' }]}
+          style={[styles.button, { backgroundColor: '#425B89' }]}
           onPress={() => handlePerfilSelecionado(profile)}
         >
           <Text style={styles.buttonText}>{profile.nome}</Text>
@@ -81,23 +89,18 @@ const Perfil = () => {
       )}
       <View style={styles.contactContainer}>
         <Text style={styles.contactText}>Siga-nos no Instagram:</Text>
-        <Text style={styles.emailText}>@bico.freela</Text>
+        <Text style={styles.emailText}>@TI.freela</Text>
         <Text style={styles.contactText}>Para entrar em contato, envie um e-mail para:</Text>
-        <Text style={styles.emailText}>contato.suporte@bicofreelancers.com.br</Text>
-        <Text style={styles.contactText}>Clientes cadastrados ganham 5% de desconto no serviço contratado! FAÇA SEU CADASTRO!</Text>
+        <Text style={styles.emailText}>contato.suporte@TIBRfreelancers.com.br</Text>
+        <Text style={styles.contactText}>Clientes cadastrados ganham 10% de desconto no serviço contratado! FAÇA SEU CADASTRO!</Text>
         <TouchableOpacity
-  style={[styles.button, { backgroundColor: '#63cfbe' }]}
+  style={[styles.button, { backgroundColor: '#425B89' }]}
   onPress={handleContactWhatsApp}
 >
   <Text style={styles.buttonText}>Contato via WhatsApp</Text>
 </TouchableOpacity>
 </View>
-<TouchableOpacity
-  style={[styles.button, { backgroundColor: '#63cfbe' }]}
-  onPress={handleIrParaWelcome}
->
-  <Text style={styles.buttonText}>Início</Text>
-</TouchableOpacity>
+
     </View>
     
   );
@@ -105,13 +108,13 @@ const Perfil = () => {
 const styles = StyleSheet.create({
 
   picker: {
-    backgroundColor: '#63cfbe',
+    backgroundColor: '#425B89',
     borderRadius: 8,
     marginTop: 10,
     color: '#fff',
   },
   button: {
-    backgroundColor: '#63cfbe',
+    backgroundColor: '#425B89',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
@@ -128,14 +131,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#rgb(100,100,100)',
+    backgroundColor: '#C0C0C0',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginTop: 28,
     marginBottom: 12,
-    color: '#63cfbe',
+    color: '#425B89',
   },
 });
 

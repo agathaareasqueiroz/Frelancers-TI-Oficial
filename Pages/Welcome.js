@@ -14,16 +14,16 @@ const Welcome = () => {
         <Text style={styles.welcomeText}>Bem vindo!</Text>
       </View>
       <View style={styles.containerForm}>
-        <Text style={styles.title}>Bico Freelancers</Text>
+        <Text style={styles.title}>TI Freelancers BR</Text>
         <Text style={styles.text}>Conheça nossa Equipe</Text>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#63cfbe' }]}
+          style={[styles.button, { backgroundColor: '#425B89' }]}
           onPress={() => handleNavigation('LoginCadastro')}
         >
           <Text style={styles.buttonText}>Login/Cadastre-se</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#63cfbe' }]}
+          style={[styles.button, { backgroundColor: '#425B89' }]}
           onPress={() => handleNavigation('Perfil')}
         >
           <Text style={styles.buttonText}>Nossa Equipe</Text>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   containerForm: {
     flex: 1,
-    backgroundColor: 'rgb(100,100,100)',
+    backgroundColor: '#A9A9A9',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingStart: '5%',
@@ -57,21 +57,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 28,
     marginBottom: 12,
-    color: '#63cfbe',
+    color: '#425B89',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginTop: 28,
     marginBottom: 12,
-    color: '#63cfbe',
+    color: '#425B89',
   },
   text: {
-    color: '#63cfbe',
+    color: '#425B89',
     fontSize: 28,
   },
   button: {
-    backgroundColor: '#63cfbe',
+    backgroundColor: '#425B89',
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
